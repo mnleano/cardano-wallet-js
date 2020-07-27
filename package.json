@@ -1,14 +1,18 @@
 {
   "name": "cardano-wallet-js",
   "version": "1.0.0",
-  "description": "",
+  "description": "Cardano Wallet in JavaScript.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "files": [
+    "dist/*"
+  ],
   "scripts": {
     "build": "tsc",
     "lint": "eslint",
-    "lint:fix": "yarn lint --fix",
-    "type-check": "tsc --noEmit"
+    "lint:fix": "npm run lint --fix",
+    "type-check": "tsc --noEmit",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -32,6 +36,7 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
+    "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
   },
   "engines": {
@@ -39,11 +44,15 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn type-check && yarn lint-staged"
+      "pre-commit": "npm run type-check && lint-staged"
     }
   },
   "lint-staged": {
-    "src/**/*.ts": "yarn lint:fix",
+    "src/**/*.ts": "npm run lint:fix",
     "src/**/*.{json, md}": "prettier --write"
+  },
+  "dependencies": {
+    "bip39": "^3.0.2",
+    "cardano-wallet": "^1.2.2"
   }
 }
