@@ -1,2 +1,3 @@
-**/*.test.ts
 dist/
+**/*.test.ts
+setupTest.ts
