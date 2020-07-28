@@ -12,7 +12,8 @@
     "lint": "eslint",
     "lint:fix": "npm run lint --fix",
     "type-check": "tsc --noEmit",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
