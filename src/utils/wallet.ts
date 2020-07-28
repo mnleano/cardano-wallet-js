@@ -28,13 +28,14 @@ export const restoreWallet = (
     return Promise.resolve({
       address: address.to_base58(),
       publicKey: key_pub,
-      privateKey: wallet.key(),
+      privateKey: account.key(),
     });
   } catch (error) {
     return Promise.reject(error);
   }
 };
 
+// TODO: Check sign message and verify message with cardano-crypto.js
 export const signMessage = (privateKey: Cardano.PrivateKey, data: Uint8Array) =>
   privateKey.sign(data);
 
