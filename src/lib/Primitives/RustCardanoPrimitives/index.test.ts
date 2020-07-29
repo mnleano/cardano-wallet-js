@@ -5,7 +5,7 @@ import { RustCardano } from './index';
 
 describe('RustCardano', () => {
   describe('verifyMessage', () => {
-    it('returns true when verifying a correct signature for a message', async () => {
+    test('returns true when verifying a correct signature for a message', async () => {
       const message = 'foobar';
       const mnemonic =
         'height bubble drama century ask online stage camp point loyal hip awesome';
@@ -28,7 +28,7 @@ describe('RustCardano', () => {
       expect(verification).toBe(true);
     });
 
-    it('returns false when verifying an incorrect message for a valid signature', async () => {
+    test('returns false when verifying an incorrect message for a valid signature', async () => {
       const message = 'foobar';
       const mnemonic =
         'height bubble drama century ask online stage camp point loyal hip awesome';
