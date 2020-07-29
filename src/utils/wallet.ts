@@ -1,7 +1,16 @@
-import Cardano from 'cardano-wallet';
+import {
+  PublicKey,
+  BlockchainSettings,
+  Entropy,
+  Bip44RootPrivateKey,
+  AccountIndex,
+  AddressKeyIndex,
+  PrivateKey,
+  Signature,
+} from 'cardano-wallet';
 
 // to connect the wallet to mainnet
-const settings = Cardano.BlockchainSettings.mainnet();
+const settings = BlockchainSettings.mainnet();
 
 export const restoreWallet = (
   mnemonic: string,
@@ -10,37 +19,34 @@ export const restoreWallet = (
 ) => {
   try {
     // recover the entropy
-    const entropy = Cardano.Entropy.from_english_mnemonics(mnemonic);
+    const entropy = Entropy.from_english_mnemonics(mnemonic);
     // recover the wallet
-    const wallet = Cardano.Bip44RootPrivateKey.recover(entropy, password);
+    const wallet = Bip44RootPrivateKey.recover(entropy, password);
 
     // create a wallet account
-    const account = wallet.bip44_account(
-      Cardano.AccountIndex.new(0 | 0x80000000),
-    );
+    const account = wallet.bip44_account(AccountIndex.new(0 | 0x80000000));
     const account_public = account.public();
 
     // create an address
     const chain_pub = account_public.bip44_chain(internal);
-    const key_pub = chain_pub.address_key(Cardano.AddressKeyIndex.new(0));
+    const key_pub = chain_pub.address_key(AddressKeyIndex.new(0));
     const address = key_pub.bootstrap_era_address(settings);
 
     return Promise.resolve({
       address: address.to_base58(),
-      publicKey: key_pub,
-      privateKey: account.key(),
+      publicKey: account_public.key().to_hex(),
+      privateKey: account.key().to_hex(),
     });
   } catch (error) {
     return Promise.reject(error);
   }
 };
 
-// TODO: Check sign message and verify message with cardano-crypto.js
-export const signMessage = (privateKey: Cardano.PrivateKey, data: Uint8Array) =>
-  privateKey.sign(data);
+export const signMessage = (privateKey: string, data: Uint8Array) =>
+  PrivateKey.from_hex(privateKey).sign(data).to_hex();
 
 export const verfifyMessage = (
-  publicKey: Cardano.PublicKey,
+  publicKey: string,
   data: Uint8Array,
-  signature: Cardano.Signature,
-) => publicKey.verify(data, signature);
+  signature: string,
+) => PublicKey.from_hex(publicKey).verify(data, Signature.from_hex(signature));

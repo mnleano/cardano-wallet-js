@@ -1,2 +1,4 @@
-export * as mnemonic from './utils/mnemonic';
-export * as wallet from './utils/wallet';
+export * from './utils/mnemonic';
+export * from './utils/wallet';
+export * from './lib';
+export * from './types';
