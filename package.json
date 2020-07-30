@@ -8,13 +8,15 @@
     "dist/*"
   ],
   "scripts": {
-    "build": "npm run clean && tsc",
+    "clean": "rimraf dist",
+    "type": "tsc --declaration --emitDeclarationOnly",
+    "compile": "babel src --out-dir dist --extensions \".ts\"",
+    "build": "npm run clean && npm run type && npm run compile",
     "lint": "eslint",
     "lint:fix": "npm run lint --fix",
     "type-check": "tsc --noEmit",
     "prepublish": "npm run build",
     "postinstall": "npm run build",
-    "clean": "rimraf dist",
     "test": "jest"
   },
   "repository": {
@@ -29,6 +31,7 @@
   },
   "homepage": "https://github.com/mnleano/cardano-wallet-js#readme",
   "devDependencies": {
+    "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
@@ -36,6 +39,7 @@
     "@typescript-eslint/eslint-plugin": "^3.7.0",
     "@typescript-eslint/parser": "^3.7.0",
     "babel-jest": "^26.1.0",
+    "babel-plugin-module-resolver": "^4.0.0",
     "eslint": "^7.5.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
