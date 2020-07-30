@@ -8,7 +8,7 @@ describe('RustCardano', () => {
     test('returns true when verifying a correct signature for a message', async () => {
       const message = 'foobar';
       const mnemonic =
-        'height bubble drama century ask online stage camp point loyal hip awesome';
+        'upper regular slight wall pulp program anxiety erupt level winter action umbrella venue fun alter';
       const keyManager = InMemoryKeyManager(RustCardano, {
         mnemonic,
         password: 'securepassword',
@@ -31,7 +31,7 @@ describe('RustCardano', () => {
     test('returns false when verifying an incorrect message for a valid signature', async () => {
       const message = 'foobar';
       const mnemonic =
-        'height bubble drama century ask online stage camp point loyal hip awesome';
+        'upper regular slight wall pulp program anxiety erupt level winter action umbrella venue fun alter';
       const keyManager = InMemoryKeyManager(RustCardano, {
         mnemonic,
         password: 'securepassword',
@@ -44,7 +44,7 @@ describe('RustCardano', () => {
 
       const verification = RustCardano.verifyMessage({
         publicKey,
-        message: 'a differnt message',
+        message: 'a different message',
         signature,
       });
 

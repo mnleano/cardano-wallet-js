@@ -5,19 +5,15 @@ import { Cardano } from 'types/Cardano';
 export function InMemoryKeyManager(
   cardano: Cardano,
   {
-    password,
-    accountIndex,
     mnemonic,
+    password,
+    accountIndex = 0,
   }: {
+    mnemonic: string;
     password: string;
     accountIndex?: number;
-    mnemonic: string;
   },
 ): KeyManager {
-  if (!accountIndex) {
-    accountIndex = 0;
-  }
-
   const validMnemonic = validateMnemonic(mnemonic);
   if (!validMnemonic) throw new InvalidMnemonic();
 
@@ -30,7 +26,7 @@ export function InMemoryKeyManager(
   return {
     signMessage: async (addressType, signingIndex, message) =>
       cardano.signMessage({
-        privateParentKey: privateParentKey,
+        privateParentKey,
         addressType,
         signingIndex,
         message,
