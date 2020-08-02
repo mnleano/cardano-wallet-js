@@ -9,6 +9,18 @@ Cardano Wallet in JavaScript.
 
 ## Documentation
 
+### Ada Wallet
+
+- #### Create
+
+- #### Create Random
+
+- #### Restore
+
+- #### Get balance
+
+- #### History
+
 ### Cardano
 
 - #### Create/Restore wallet (parent account)
