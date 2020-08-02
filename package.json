@@ -29,7 +29,6 @@
   },
   "homepage": "https://github.com/mnleano/cardano-wallet-js#readme",
   "devDependencies": {
-    "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
