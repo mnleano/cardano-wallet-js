@@ -1,6 +1,6 @@
-import { InMemoryKeyManager } from 'lib';
+import { InMemoryKeyManager } from '../../../lib';
+import { AddressType } from '../../../types';
 
-import { AddressType } from 'types/Wallet';
 import { RustCardano } from './index';
 
 describe('RustCardano', () => {

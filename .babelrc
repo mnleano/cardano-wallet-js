@@ -9,14 +9,5 @@
         }
       }
     ]
-  ],
-  "plugins": [
-    [
-      "module-resolver",
-      {
-        "root": ["./src"],
-        "extensions": [".ts"]
-      }
-    ]
   ]
 }

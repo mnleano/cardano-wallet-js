@@ -1,9 +1,7 @@
 import { Coin as CoinT, Bip44AccountPrivate } from 'cardano-wallet';
 
-import { getBindingsForEnvironment } from 'lib/bindings';
-
-import { Cardano, ChainSettings } from 'types/Cardano';
-import { AddressType } from 'types/Wallet';
+import { getBindingsForEnvironment } from '../../../lib/bindings';
+import { Cardano, ChainSettings, AddressType } from '../../../types';
 
 const {
   Signature,
