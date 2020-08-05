@@ -1,6 +1,9 @@
-import { ChainSettings } from './ChainSettings';
-
 import { AddressType, Address } from '../Wallet';
+import { TransactionInput, TransactionOutput } from '../Transaction';
+
+import { ChainSettings } from './ChainSettings';
+import { FeeAlgorithm } from './FeeAlgorithm';
+import { Transaction } from './Transaction';
 
 export interface Cardano {
   // Create/ Restore wallet (parent account)
@@ -35,4 +38,10 @@ export interface Cardano {
     message: string;
     signature: string;
   }) => boolean;
+
+  buildTransaction: (
+    inputs: TransactionInput[],
+    outputs: TransactionOutput[],
+    feeAlgorithm?: FeeAlgorithm,
+  ) => Transaction;
 }

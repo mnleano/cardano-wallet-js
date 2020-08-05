@@ -61,11 +61,14 @@
     "src/**/*.{json, md}": "prettier --write"
   },
   "dependencies": {
+    "@types/cbor": "^5.0.1",
     "@types/jest": "^26.0.7",
     "axios": "^0.19.2",
     "bip39": "^3.0.2",
     "cardano-wallet": "^1.2.2",
     "cardano-wallet-browser": "^1.2.2",
+    "cbor": "^5.1.0",
+    "io-ts": "^2.2.9",
     "ts-custom-error": "^3.1.1"
   }
 }

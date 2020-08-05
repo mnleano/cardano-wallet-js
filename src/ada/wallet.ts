@@ -1,7 +1,11 @@
 import { generateMnemonic, validateMnemonic } from '../utils/mnemonic';
 import { RustCardano } from '../lib/Primitives/RustCardanoPrimitives/index';
 import builder from '../helpers/builder';
-import { AddressType } from '../types';
+import { AddressType, FeeAlgorithm } from '../types';
+import Transaction, {
+  TransactionInput,
+  TransactionOutput,
+} from '../types/Transaction';
 
 import cardanoExploreAPI from '../api';
 import { UNDEFINED, INVALID_MNEMONIC } from './errors/index';
@@ -86,6 +90,21 @@ class AdaWallet {
     } catch (error) {
       return Promise.reject(builder.error(error));
     }
+  }
+
+  createTransaction(
+    inputs: TransactionInput[],
+    outputs: TransactionOutput[],
+    feeAlgorithm = FeeAlgorithm.default,
+  ) {
+    const transactionInstance = Transaction(
+      RustCardano,
+      inputs,
+      outputs,
+      feeAlgorithm,
+    );
+    // TODO send transaction
+    return transactionInstance;
   }
 }
 
