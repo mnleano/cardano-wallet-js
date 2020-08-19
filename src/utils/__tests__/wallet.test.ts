@@ -1,4 +1,4 @@
-import { restoreWallet, signMessage, verfifyMessage } from '../wallet';
+import { restoreWallet } from '../wallet';
 
 const DEFEAULT_MNEMONIC =
   'crowd captain hungry tray powder motor coast oppose month shed parent mystery torch resemble index';
@@ -19,36 +19,5 @@ describe('wallet.restoreWallet', () => {
     expect(address).toHaveLength(59);
     expect(privateKey).toBe(DEFAULT_PRIVATE_KEY);
     expect(publicKey).toBe(DEFAULT_PUBLIC_KEY);
-  });
-});
-
-describe('signing message', () => {
-  let privateKey: string;
-  let publicKey: string;
-  beforeAll(async () => {
-    ({ privateKey, publicKey } = await restoreWallet(
-      DEFEAULT_MNEMONIC,
-      DEFAULT_PASSWORD,
-      true,
-    ));
-  });
-  describe('wallet.signMessage', () => {
-    test('should work', async () => {
-      const sig = signMessage(privateKey, Buffer.from('Hello world!'));
-      expect(sig).toBeTruthy();
-    });
-  });
-  describe('wallet.verfifyMessage', () => {
-    test('should work', async () => {
-      const sig = signMessage(privateKey, Buffer.from('Hello world!'));
-      expect(sig).toBeTruthy();
-
-      const result = verfifyMessage(
-        publicKey,
-        Buffer.from('Hello world!'),
-        sig,
-      );
-      expect(result).toBeTruthy();
-    });
   });
 });

@@ -68,6 +68,7 @@
     "cardano-wallet": "^1.2.2",
     "cardano-wallet-browser": "^1.2.2",
     "cbor": "^5.1.0",
+    "fp-ts": "^2.8.1",
     "io-ts": "^2.2.9",
     "ts-custom-error": "^3.1.1"
   }

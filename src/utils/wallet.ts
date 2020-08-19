@@ -1,12 +1,9 @@
 import {
-  PublicKey,
   BlockchainSettings,
   Entropy,
   Bip44RootPrivateKey,
   AccountIndex,
   AddressKeyIndex,
-  PrivateKey,
-  Signature,
 } from 'cardano-wallet';
 
 // to connect the wallet to mainnet
@@ -41,12 +38,3 @@ export const restoreWallet = (
     return Promise.reject(error);
   }
 };
-
-export const signMessage = (privateKey: string, data: Uint8Array) =>
-  PrivateKey.from_hex(privateKey).sign(data).to_hex();
-
-export const verfifyMessage = (
-  publicKey: string,
-  data: Uint8Array,
-  signature: string,
-) => PublicKey.from_hex(publicKey).verify(data, Signature.from_hex(signature));
