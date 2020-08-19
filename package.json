@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run clean && tsc",
+    "build": "tsc",
     "lint": "eslint",
     "lint:fix": "npm run lint --fix",
     "type-check": "tsc --noEmit",
