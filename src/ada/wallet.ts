@@ -36,6 +36,7 @@ class AdaWallet {
       return Promise.resolve(
         builder.success({
           ...address,
+          mnemonic,
           privateKey: privateParentKey,
           publicKey: publicParentKey,
         }),
