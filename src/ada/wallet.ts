@@ -46,10 +46,10 @@ class AdaWallet {
     }
   }
 
-  async createRandom() {
+  async createRandom(password = '') {
     try {
       const mnemonic = await generateMnemonic();
-      return this.create({ mnemonic, password: '', accountIndex: 0 });
+      return this.create({ mnemonic, password, accountIndex: 0 });
     } catch (error) {
       return Promise.reject(builder.error(error));
     }
