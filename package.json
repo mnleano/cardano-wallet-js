@@ -9,12 +9,11 @@
   ],
   "scripts": {
     "clean": "rimraf dist",
-    "build": "tsc",
+    "build": "yarn clean && tsc",
     "lint": "eslint",
     "lint:fix": "npm run lint --fix",
     "type-check": "tsc --noEmit",
-    "prepublish": "npm run build",
-    "postinstall": "npm run build",
+    "prepare": "npm run build",
     "test": "jest"
   },
   "repository": {
